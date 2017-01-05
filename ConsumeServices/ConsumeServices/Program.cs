@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsumeServices.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -16,21 +17,18 @@ namespace ConsumeServices
 
         static async Task RunAsync()
         {
-            var client = new HttpClient();
-
+            HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:64944/");
-
-            client.DefaultRequestHeaders.Accept.Clear();
 
             HttpResponseMessage response = await client.GetAsync("/api/contact");
 
             if (response.IsSuccessStatusCode)
             {
-
+                //var contactObject = response.Content.ReadAsStringAsync<IEnumerable<string>>().Result;
             }
             else
             {
-
+                
             }
         }
     }

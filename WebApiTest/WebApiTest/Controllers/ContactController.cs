@@ -4,18 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApiTest.Models;
+using WebApiTest.Services;
 
 namespace WebApiTest.Controllers
 {
     public class ContactController : ApiController
     {
-        public string[] Get()
+        private ContactRepository contactRepository;
+
+        public ContactController()
         {
-            return new string[]
-            {
-                "Hola",
-                "Mundo",
-            };
+            this.contactRepository = new ContactRepository();
+        }
+
+        public ContactModel[] Get()
+        {
+            return contactRepository.GetAllContacts();
         }
     }
 }
